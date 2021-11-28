@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PassportCard.DAL\PassportCard.DAL.csproj" />
+    <ProjectReference Include="..\PassportCard.DTO\PassportCard.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

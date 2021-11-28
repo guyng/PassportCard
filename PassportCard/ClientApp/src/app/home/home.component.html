@@ -1,0 +1,8 @@
+<div fxLayout="column" fxLayoutAlign="center center" (scrollEnd)="onScroll()">
+    <mat-form-field>
+        <mat-label>Search posts by title</mat-label>
+        <input matInput (input)="onPostSearch($event.target.value)">
+    </mat-form-field>
+    <post *ngFor="let post of posts$ | async" [post]="post"></post>
+    <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+</div>

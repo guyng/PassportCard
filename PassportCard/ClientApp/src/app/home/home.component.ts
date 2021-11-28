@@ -12,7 +12,7 @@ import { getLoadingPosts, getPosts } from '../store/post.selectors';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  scrollPage = 0;
+  scrollPage = 1;
   posts$: Observable<Post[]>;
   timeout
   loading$: Observable<boolean>;
@@ -21,7 +21,7 @@ export class HomeComponent {
   constructor(private _store: Store<PostState>) {
     this.posts$ = this._store.select(getPosts);
     this.loading$ = this._store.select(getLoadingPosts);
-    this._store.dispatch(loadPosts({ page: 0, searchInput: this.searchInput }));
+    this._store.dispatch(loadPosts({ page: 1, searchInput: this.searchInput }));
     this.loading$.subscribe(l => {
       this.loading = l;
     })
@@ -39,7 +39,7 @@ export class HomeComponent {
 
   onPostSearch(value) {
     console.log(value);
-    this.scrollPage = 0;
+    this.scrollPage = 1;
     this.searchInput = value;
     this._store.dispatch(loadPosts({ page: this.scrollPage, searchInput: this.searchInput }));
   }

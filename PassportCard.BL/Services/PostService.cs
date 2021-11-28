@@ -17,7 +17,7 @@ namespace PassportCard.BL.Services
         {
             _postRepository = postRepository;
         }
-        public async Task<PostPageViewModel> GetPosts(int page = 0,string searchInput = "")
+        public async Task<PostPageViewModel> GetPosts(int page = 1,string searchInput = "")
         {
             if (string.IsNullOrEmpty(searchInput))
             {
@@ -26,8 +26,7 @@ namespace PassportCard.BL.Services
             var pagedPosts = _postRepository.GetPosts()
 
                 .Where(p => p.Title.ToLower().Contains(searchInput.ToLower()))
-                .Skip(POST_PER_PAGE * page)
-                .Take(POST_PER_PAGE)
+                .Take(POST_PER_PAGE * page)
                 .Select(p => new PostViewModel()
             {
                 Id = p.Id,

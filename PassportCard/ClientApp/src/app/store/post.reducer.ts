@@ -33,12 +33,12 @@ export const PostReducers = createReducer(
     ),
     on(loadPostsSuccess, (state, { pagedPosts }) => {
         debugger;
-        let posts = JSON.parse(JSON.stringify(state.posts)) as Post[];
-        posts = posts.concat(pagedPosts.posts) as Post[];
+        // let posts = JSON.parse(JSON.stringify(state.posts)) as Post[];
+        // posts = posts.concat(pagedPosts.posts) as Post[];
         return ({
             ...state,
-            posts,
-            maxPostsLoaded: posts.length >= pagedPosts.postCount,
+            posts: pagedPosts.posts,
+            maxPostsLoaded: pagedPosts.posts.length >= pagedPosts.postCount,
             loading: false,
             loaded: true
         })
